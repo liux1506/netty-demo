@@ -1,4 +1,4 @@
-package com.learn.netty.server.handler;
+package com.learn.netty.client.base;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

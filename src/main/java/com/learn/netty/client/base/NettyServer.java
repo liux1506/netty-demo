@@ -1,6 +1,5 @@
-package com.learn.netty.server;
+package com.learn.netty.client.base;
 
-import com.learn.netty.server.handler.NettyServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
