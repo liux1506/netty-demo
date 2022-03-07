@@ -1,4 +1,4 @@
-package com.learn.netty.client.base;
+package com.learn.base;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
