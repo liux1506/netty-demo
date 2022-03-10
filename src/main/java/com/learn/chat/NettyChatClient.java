@@ -29,12 +29,11 @@ public class NettyChatClient {
                             ChannelPipeline pipeline = socketChannel.pipeline();
                             pipeline.addLast(new StringEncoder());
                             pipeline.addLast(new StringDecoder());
-
                             pipeline.addLast(new NettyChatClientHandler());
                         }
                     });
 
-            ChannelFuture connect = bootstrap.connect("localhost", 9000);
+            ChannelFuture connect = bootstrap.connect("localhost", 9000).sync();
 
             Scanner scanner = new Scanner(System.in);
             while (scanner.hasNextLine()) {
