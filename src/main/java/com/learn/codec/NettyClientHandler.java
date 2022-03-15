@@ -18,14 +18,13 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        ByteBuf byteBuf = Unpooled.copiedBuffer("Hello Service".getBytes(StandardCharsets.UTF_8));
-        ctx.writeAndFlush(byteBuf);
+        Person person = new Person("client", 25);
+        ctx.writeAndFlush(person);
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        ByteBuf buf = (ByteBuf) msg;
-        System.out.println("收到服务端数据：" + buf.toString(CharsetUtil.UTF_8));
+        System.out.println("收到服务端数据：" + msg.toString());
     }
 
     @Override

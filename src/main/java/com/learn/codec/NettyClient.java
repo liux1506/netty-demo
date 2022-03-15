@@ -8,6 +8,9 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.protobuf.ProtobufDecoder;
+import io.netty.handler.codec.serialization.ClassResolvers;
+import io.netty.handler.codec.serialization.ObjectDecoder;
+import io.netty.handler.codec.serialization.ObjectEncoder;
 
 /**
  * @Classname NettyClient
@@ -31,6 +34,9 @@ public class NettyClient {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception { // channel 初始化
                         ChannelPipeline pipeline = ch.pipeline(); // pipeline
+                        pipeline.addLast(new ObjectEncoder());
+                        pipeline.addLast(new ObjectDecoder(
+                            ClassResolvers.weakCachingResolver(Person.class.getClassLoader())));
                         pipeline.addLast(new NettyClientHandler()); // 自定义handler
                     }
                 });
